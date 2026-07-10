@@ -1,0 +1,11 @@
+<script setup lang="ts"></script>
+
+<template>
+  <header class="header">Header</header>
+</template>
+
+<style scoped>
+.header {
+  background-color: gray;
+}
+</style>
