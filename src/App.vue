@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import Header from "./components/header/Header.vue";
+import DasboardLayout from "./components/dashboard-layout/DasboardLayout.vue";
 </script>
 
 <template>
-  <div class="appWrapper">
-    <Header />
-  </div>
+  <DasboardLayout />
 </template>
 
 <style scoped></style>

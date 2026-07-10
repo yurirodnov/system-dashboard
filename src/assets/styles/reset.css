@@ -9,3 +9,7 @@ body {
   height: 100%;
   font-family: sans-serif;
 }
+
+button {
+  border: none;
+}
