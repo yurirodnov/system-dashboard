@@ -10,4 +10,9 @@ import Body from "../body/Body.vue";
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.dashboardLayout {
+  background-color: var(--main-bg);
+  height: 100%;
+}
+</style>

@@ -4,8 +4,4 @@
   <header class="header">Header</header>
 </template>
 
-<style scoped>
-.header {
-  background-color: gray;
-}
-</style>
+<style scoped></style>
