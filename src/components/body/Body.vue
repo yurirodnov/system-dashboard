@@ -2,9 +2,9 @@
 import { ref } from "vue";
 import SystemName from "../system-name/SystemName.vue";
 import { fakeAsync } from "@/lib/fakeAsync.ts";
-import type { SystemData } from "@/data/systemData.ts";
+import type { DashboardData } from "@/data/systemData.ts";
 
-const data = ref<SystemData[] | null>(null);
+const data = ref<DashboardData[] | null>(null);
 const loading = ref<boolean>(false);
 const error = ref<Error | null>(null);
 
@@ -35,7 +35,7 @@ loadData();
     <p v-if="loading">Loading...</p>
     <p v-else-if="error">Error: {{ error.message }}</p>
     <template v-else-if="data">
-      <SystemName v-for="(item, index) in data" :key="index" :system-name="item.osName" />
+      <SystemName v-for="(item, index) in data" :key="index" :data="item" />
     </template>
   </main>
 </template>
