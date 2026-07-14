@@ -31,13 +31,13 @@ loadData();
 </script>
 
 <template>
-  <div class="body">
+  <main class="main">
     <p v-if="loading">Loading...</p>
     <p v-else-if="error">Error: {{ error.message }}</p>
     <template v-else-if="data">
       <SystemName v-for="(item, index) in data" :key="index" :system-name="item.osName" />
     </template>
-  </div>
+  </main>
 </template>
 
 <style scoped></style>

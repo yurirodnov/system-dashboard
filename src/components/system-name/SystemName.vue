@@ -3,8 +3,10 @@ defineProps(["systemName"]);
 </script>
 
 <template>
-  <h3>System name:</h3>
-  <p>{{ systemName }}</p>
+  <div class="systemNameBlock">
+    <h3>System name:</h3>
+    <p>{{ systemName }}</p>
+  </div>
 </template>
 
 <style scoped></style>
