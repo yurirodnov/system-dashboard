@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import SystemName from "../system-name/SystemName.vue";
+import Metrics from "../metrics/Metrics.vue";
 import { fakeAsync } from "@/lib/fakeAsync.ts";
 import type { DashboardData } from "@/data/systemData.ts";
 
@@ -35,7 +35,7 @@ loadData();
     <p v-if="loading">Loading...</p>
     <p v-else-if="error">Error: {{ error.message }}</p>
     <template v-else-if="data">
-      <SystemName v-for="(item, index) in data" :key="index" :data="item" />
+      <Metrics v-for="(dataItem, index) in data" :key="index" :data="dataItem" />
     </template>
   </main>
 </template>
