@@ -11,12 +11,22 @@ const props = defineProps<Props>();
 
 <template>
   <div class="mericsWrapper">
-    <MetricBlock metric-name="Hostname:" :metric-value="data.system.hostname" />
+    <div class="systemMetricsWrapper">
+      <MetricBlock metric-name="Hostname:" :metric-value="data.system.hostname" />
+      <MetricBlock metric-name="Operational system:" :metric-value="data.system.os" />
+      <MetricBlock metric-name="Architecture:" :metric-value="data.system.arch" />
+      <MetricBlock metric-name="Uptime:" :metric-value="data.system.uptime" />
+    </div>
   </div>
 </template>
 
 <style scoped>
 .mericsWrapper {
   display: flex;
+}
+
+.systemMetricsWrapper {
+  display: flex;
+  gap: 30px;
 }
 </style>

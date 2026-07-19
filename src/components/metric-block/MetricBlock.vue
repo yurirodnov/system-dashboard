@@ -10,19 +10,27 @@ const props = defineProps<MetricBlockProps>();
 </script>
 
 <template>
-  <div class="systemNameBlock">
-    <h3>{{ props.metricName }}</h3>
-    <p>{{ props.metricValue }}</p>
+  <div class="metricBlock">
+    <h3 class="metricName">{{ props.metricName }}</h3>
+    <p class="metricValue">{{ props.metricValue }}</p>
   </div>
 </template>
 
 <style scoped>
-.systemNameBlock {
+.metricBlock {
   display: flex;
   gap: 10px;
   flex-direction: column;
-  box-shadow: 0px 0px 50px 0px var(--neon-shadow-color);
+  box-shadow: 0px 0px 15px 0px var(--neon-shadow-color);
   padding: 20px;
   border-radius: 10px;
+}
+
+.metricName {
+  color: var(--metric-name-color);
+}
+
+.metricValue {
+  font-weight: bold;
 }
 </style>

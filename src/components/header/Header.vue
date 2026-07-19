@@ -6,7 +6,7 @@
 
 <style scoped>
 .header {
-  padding: 20px 10px;
+  padding: 20px;
 
   .h1 {
     text-shadow: 2px 2px 4px var(--neon-shadow-color);
