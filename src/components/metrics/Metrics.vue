@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { DashboardData } from "@/data/systemData";
+import MetricBlock from "../metric-block/MetricBlock.vue";
 
 interface Props {
   data: DashboardData;
@@ -9,10 +10,13 @@ const props = defineProps<Props>();
 </script>
 
 <template>
-  <div class="systemNameBlock">
-    <h3>Host name:</h3>
-    <p>{{ props.data.system.hostname }}</p>
+  <div class="mericsWrapper">
+    <MetricBlock metric-name="Hostname:" :metric-value="data.system.hostname" />
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.mericsWrapper {
+  display: flex;
+}
+</style>

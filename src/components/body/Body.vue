@@ -40,4 +40,8 @@ loadData();
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.main {
+  padding: 20px 10px;
+}
+</style>
