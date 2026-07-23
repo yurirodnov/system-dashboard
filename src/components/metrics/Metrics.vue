@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { DashboardData } from "@/data/systemData";
 import MetricBlock from "../metric-block/MetricBlock.vue";
-import { convertBytes } from "@/lib/bytesConverter.ts";
+import { secondsConverter } from "@/lib/secondsConverter.ts";
 
 interface Props {
   data: DashboardData;
@@ -16,7 +16,7 @@ const props = defineProps<Props>();
       <MetricBlock metric-name="Hostname:" :metric-value="data.system.hostname" />
       <MetricBlock metric-name="Operational system:" :metric-value="data.system.os" />
       <MetricBlock metric-name="Architecture:" :metric-value="data.system.arch" />
-      <MetricBlock metric-name="Uptime:" :metric-value="data.system.uptime" />
+      <MetricBlock metric-name="Uptime:" :metric-value="secondsConverter(data.system.uptime)" />
     </div>
   </div>
 </template>
