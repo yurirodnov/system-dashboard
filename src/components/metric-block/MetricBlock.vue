@@ -24,6 +24,7 @@ const props = defineProps<MetricBlockProps>();
   box-shadow: 0px 0px 15px 0px var(--neon-shadow-color);
   padding: 20px;
   border-radius: 10px;
+  background-color: var(--metric-block-bg);
 }
 
 .metricName {
@@ -32,5 +33,6 @@ const props = defineProps<MetricBlockProps>();
 
 .metricValue {
   font-weight: bold;
+  font-size: 1.5em;
 }
 </style>
