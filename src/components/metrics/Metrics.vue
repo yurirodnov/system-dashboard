@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { DashboardData } from "@/data/systemData";
 import MetricBlock from "../metric-block/MetricBlock.vue";
+import { convertBytes } from "@/lib/bytesConverter.ts";
 
 interface Props {
   data: DashboardData;
