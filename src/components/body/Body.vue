@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import Metrics from "../metrics/Metrics.vue";
-import { fakeAsync } from "@/lib/fakeAsync.ts";
-import type { DashboardData } from "@/data/systemData.ts";
+// import { fakeAsync } from "@/lib/fakeAsync.ts";
+import type { StaticCommon } from "@/data/systemData.ts";
 
-const data = ref<DashboardData[] | null>(null);
+const data = ref<StaticCommon | null>(null);
 const loading = ref<boolean>(false);
 const error = ref<Error | null>(null);
 
@@ -13,9 +13,17 @@ const loadData = async () => {
   loading.value = true;
   error.value = null;
 
+  const url = "http://127.0.0.1:3000/api/data/static";
+
   try {
-    const response = await fakeAsync(1000);
-    data.value = response;
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+
+    data.value = result.data;
   } catch (err) {
     if (err instanceof Error) {
       error.value = err;
@@ -25,9 +33,12 @@ const loadData = async () => {
   } finally {
     loading.value = false;
   }
-};
 
-loadData();
+  console.log("Fetched data", data.value);
+};
+onMounted(() => {
+  loadData();
+});
 </script>
 
 <template>
@@ -35,7 +46,7 @@ loadData();
     <p v-if="loading">Loading...</p>
     <p v-else-if="error">Error: {{ error.message }}</p>
     <template v-else-if="data">
-      <Metrics v-for="(dataItem, index) in data" :key="index" :data="dataItem" />
+      <Metrics :system-data="data" />
     </template>
   </main>
 </template>
