@@ -41,24 +41,20 @@ const loadData = async () => {
 onMounted(() => {
   loadData();
 
-  // 1. Слушаем успешное подключение
   socket.on("connect", () => {
     console.log("Frontend connected:", socket.id);
   });
 
-  // 2. Слушаем ошибки подключения (самая частая причина тишины)
   socket.on("connect_error", (err) => {
     console.error("Frontend connection error:", err.message);
   });
 
-  // 3. Слушаем отключение
   socket.on("disconnect", (reason) => {
     console.log("Socket disconnected. Reason:", reason);
   });
 
-  // 4. Твой слушатель данных
   socket.on("metrics-update", (data) => {
-    console.log("📡 5. ПОЛУЧЕНЫ ДАННЫЕ:", data);
+    console.log("Data received:", data);
     wsData.value = data;
   });
 });
