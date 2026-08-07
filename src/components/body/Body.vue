@@ -1,12 +1,14 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 import Metrics from "../metrics/Metrics.vue";
-// import { fakeAsync } from "@/lib/fakeAsync.ts";
-import type { StaticCommon } from "@/data/systemData.ts";
+import type { DynamicCommon, StaticCommon } from "@/data/systemData.ts";
+import { socket } from "@/lib/socket.ts";
 
 const data = ref<StaticCommon | null>(null);
 const loading = ref<boolean>(false);
 const error = ref<Error | null>(null);
+
+const wsData = ref<DynamicCommon | null>(null);
 
 const loadData = async () => {
   data.value = null;
@@ -22,7 +24,6 @@ const loadData = async () => {
     }
 
     const result = await response.json();
-
     data.value = result.data;
   } catch (err) {
     if (err instanceof Error) {
@@ -36,8 +37,30 @@ const loadData = async () => {
 
   console.log("Fetched data", data.value);
 };
+
 onMounted(() => {
   loadData();
+
+  // 1. Слушаем успешное подключение
+  socket.on("connect", () => {
+    console.log("Frontend connected:", socket.id);
+  });
+
+  // 2. Слушаем ошибки подключения (самая частая причина тишины)
+  socket.on("connect_error", (err) => {
+    console.error("Frontend connection error:", err.message);
+  });
+
+  // 3. Слушаем отключение
+  socket.on("disconnect", (reason) => {
+    console.log("Socket disconnected. Reason:", reason);
+  });
+
+  // 4. Твой слушатель данных
+  socket.on("metrics-update", (data) => {
+    console.log("📡 5. ПОЛУЧЕНЫ ДАННЫЕ:", data);
+    wsData.value = data;
+  });
 });
 </script>
 

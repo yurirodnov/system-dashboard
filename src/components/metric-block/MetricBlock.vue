@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { DashboardData } from "@/data/systemData";
-
 interface MetricBlockProps {
   metricName: string;
   metricValue: string | number;
