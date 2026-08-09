@@ -19,7 +19,12 @@ const props = defineProps<Props>();
         metric-name="CPU name"
         :metric-value="staticData.cpu.manufacturer + ' ' + staticData.cpu.modelName"
       />
-      <MetricBlock metric-name="CPU load" :metric-value="dynamicData?.cpu.cpuLoad" />
+      <MetricBlock metric-name="CPU load (%)" :metric-value="dynamicData?.cpu.cpuLoad" />
+    </div>
+
+    <div class="memoryMetricsWrapper">
+      <MetricBlock metric-name="Total RAM" :metric-value="convertBytes(staticData.memory.memoryTotal)" />
+      <MetricBlock metric-name="Used RAM" :metric-value="convertBytes(dynamicData?.memory.memoryUsed)" />
     </div>
   </div>
 </template>
