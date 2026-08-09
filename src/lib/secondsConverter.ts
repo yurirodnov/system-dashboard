@@ -1,4 +1,4 @@
-export const convertSeconds = (s: number): string => {
+export const convertSeconds = (s: number | undefined): string => {
   const SECONDS_IN_DAY = 86400;
   const SECONDS_IN_HOUR = 3600;
   const SECONDS_IN_MINUTE = 60;

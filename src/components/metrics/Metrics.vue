@@ -26,6 +26,12 @@ const props = defineProps<Props>();
       <MetricBlock metric-name="Total RAM" :metric-value="convertBytes(staticData.memory.memoryTotal)" />
       <MetricBlock metric-name="Used RAM" :metric-value="convertBytes(dynamicData?.memory.memoryUsed)" />
     </div>
+
+    <div class="systemMetricsWrapper">
+      <MetricBlock metric-name="OS" :metric-value="staticData.os.osName" />
+      <MetricBlock metric-name="Arch" :metric-value="staticData.os.arch" />
+      <MetricBlock metric-name="Uptime" :metric-value="convertSeconds(dynamicData?.system.uptime)" />
+    </div>
   </div>
 </template>
 
