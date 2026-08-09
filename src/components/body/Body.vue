@@ -65,7 +65,7 @@ onMounted(() => {
     <p v-if="loading">Loading...</p>
     <p v-else-if="error">Error: {{ error.message }}</p>
     <template v-else-if="data">
-      <Metrics :system-data="data" />
+      <Metrics :static-data="data" :dynamic-data="wsData" />
     </template>
   </main>
 </template>

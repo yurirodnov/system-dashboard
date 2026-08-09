@@ -1,7 +1,7 @@
 <script setup lang="ts">
 interface MetricBlockProps {
   metricName: string;
-  metricValue: string | number;
+  metricValue: string | number | undefined;
 }
 
 const props = defineProps<MetricBlockProps>();
