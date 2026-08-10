@@ -10,6 +10,7 @@
 
   .h1 {
     text-shadow: 2px 2px 4px var(--neon-shadow-color);
+    font-size: 3em;
   }
 }
 </style>

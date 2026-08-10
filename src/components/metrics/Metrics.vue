@@ -15,26 +15,11 @@ const props = defineProps<Props>();
 
 <template>
   <div class="mericsWrapper">
-    <MetricBar :metric-total="staticData.memory.memoryTotal" :metric-used="dynamicData?.memory.memoryUsed" />
-
-    <!-- <div class="cpuMetricsWrapper">
-      <MetricBlock
-        metric-name="CPU name"
-        :metric-value="staticData.cpu.manufacturer + ' ' + staticData.cpu.modelName"
-      />
-      <MetricBlock metric-name="CPU load (%)" :metric-value="dynamicData?.cpu.cpuLoad" />
-    </div>
-
-    <div class="memoryMetricsWrapper">
-      <MetricBlock metric-name="Total RAM" :metric-value="convertBytes(staticData.memory.memoryTotal)" />
-      <MetricBlock metric-name="Used RAM" :metric-value="convertBytes(dynamicData?.memory.memoryUsed)" />
-    </div>
-
-    <div class="systemMetricsWrapper">
-      <MetricBlock metric-name="OS" :metric-value="staticData.os.osName" />
-      <MetricBlock metric-name="Arch" :metric-value="staticData.os.arch" />
-      <MetricBlock metric-name="Uptime" :metric-value="convertSeconds(dynamicData?.system.uptime)" />
-    </div> -->
+    <MetricBar
+      :metric-total="staticData.memory.memoryTotal"
+      :metric-used-percent="dynamicData?.memory.memoryUsedPercent"
+      :metric-used-count="dynamicData?.memory.memoryUsedCount"
+    />
   </div>
 </template>
 

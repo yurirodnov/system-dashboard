@@ -4,7 +4,8 @@ import { ref } from "vue";
 
 interface MetricBarProps {
   metricTotal: number;
-  metricUsed: number | undefined;
+  metricUsedPercent: number | undefined;
+  metricUsedCount: number | undefined;
 }
 
 const props = defineProps<MetricBarProps>();
@@ -14,12 +15,13 @@ const props = defineProps<MetricBarProps>();
   <div class="metricBar">
     <div class="metricInfo">
       <h3 class="metricName">RAM</h3>
-      <span>{{ props.metricUsed }} / {{ convertBytes(props.metricTotal) }}</span>
+      <span>-></span>
+      <span>{{ convertBytes(props.metricUsedCount) }} / {{ convertBytes(props.metricTotal) }}</span>
     </div>
 
     <div class="metricBarTotal">
-      <div class="metricBarUsed" :style="{ width: props.metricUsed + '%' }">
-        <span class="metricBarUsedCount">{{ props.metricUsed }}%</span>
+      <div class="metricBarUsed" :style="{ width: props.metricUsedPercent + '%' }">
+        <span class="metricBarUsedCount">{{ props.metricUsedPercent }}%</span>
       </div>
     </div>
   </div>
@@ -30,10 +32,13 @@ const props = defineProps<MetricBarProps>();
   width: 600px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 10px;
 }
 
-.metricName {
+.metricInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 1.5em;
 }
 
