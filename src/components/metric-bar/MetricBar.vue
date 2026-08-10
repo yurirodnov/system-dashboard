@@ -15,7 +15,7 @@ const props = defineProps<MetricBarProps>();
   <div class="metricBar">
     <div class="metricInfo">
       <h3 class="metricName">RAM</h3>
-      <span>-></span>
+      <span>&nbsp;>>>&nbsp;</span>
       <span>{{ convertBytes(props.metricUsedCount) }} / {{ convertBytes(props.metricTotal) }}</span>
     </div>
 

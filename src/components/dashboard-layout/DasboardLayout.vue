@@ -13,8 +13,9 @@ import Body from "../body/Body.vue";
 
 <style scoped>
 .dashboardLayout {
-  width: 900px;
+  width: 80%;
   background-color: var(--main-bg);
-  height: 100%;
+  height: 90%;
+  box-shadow: 0px 0px 50px -9px rgba(0, 0, 0, 0.3);
 }
 </style>

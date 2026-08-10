@@ -8,9 +8,10 @@
 #app {
   height: 100%;
   color: var(--main-text-color);
-  background: #0b2630;
-  background: linear-gradient(90deg, rgba(11, 38, 48, 1) 0%, rgba(101, 64, 173, 1) 47%, rgb(123, 36, 133) 100%);
+  background: #861cb0;
+  background: linear-gradient(0deg, rgb(94, 19, 124) 0%, rgb(56, 11, 78) 100%);
   display: flex;
   justify-content: center;
+  align-items: center;
   font-family: Silkscreen;
 }
