@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { DynamicCommon, StaticCommon } from "@/data/systemData.ts";
 import MetricBlock from "../metric-block/MetricBlock.vue";
+import MetricBar from "../metric-bar/MetricBar.vue";
 import { convertSeconds } from "@/lib/secondsConverter.ts";
 import { convertBytes } from "@/lib/bytesConverter.ts";
 
@@ -14,7 +15,8 @@ const props = defineProps<Props>();
 
 <template>
   <div class="mericsWrapper">
-    <div class="cpuMetricsWrapper">
+    <MetricBar :metric-total="staticData.memory.memoryTotal" :metric-used="dynamicData?.memory.memoryUsed" />
+    <!-- <div class="cpuMetricsWrapper">
       <MetricBlock
         metric-name="CPU name"
         :metric-value="staticData.cpu.manufacturer + ' ' + staticData.cpu.modelName"
@@ -31,7 +33,7 @@ const props = defineProps<Props>();
       <MetricBlock metric-name="OS" :metric-value="staticData.os.osName" />
       <MetricBlock metric-name="Arch" :metric-value="staticData.os.arch" />
       <MetricBlock metric-name="Uptime" :metric-value="convertSeconds(dynamicData?.system.uptime)" />
-    </div>
+    </div> -->
   </div>
 </template>
 
