@@ -23,7 +23,7 @@ const usedWidth = ref(props.metricUsed);
 
 <style scoped>
 .metricBar {
-  width: 1300px;
+  width: 600px;
 }
 
 .metricBarTotal {

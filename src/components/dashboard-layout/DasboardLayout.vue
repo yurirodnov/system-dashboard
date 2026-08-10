@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// src/components/dashboard-layout/DashboardLayout.vue
 import Header from "../header/Header.vue";
 import Body from "../body/Body.vue";
 </script>
@@ -12,6 +13,7 @@ import Body from "../body/Body.vue";
 
 <style scoped>
 .dashboardLayout {
+  width: 900px;
   background-color: var(--main-bg);
   height: 100%;
 }
