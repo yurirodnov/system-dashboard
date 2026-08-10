@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { convertBytes } from "@/lib/bytesConverter";
 import { ref } from "vue";
 
 interface MetricBarProps {
@@ -7,15 +8,18 @@ interface MetricBarProps {
 }
 
 const props = defineProps<MetricBarProps>();
-
-const usedWidth = ref(props.metricUsed);
 </script>
 
 <template>
   <div class="metricBar">
+    <div class="metricInfo">
+      <h3 class="metricName">RAM</h3>
+      <span>{{ props.metricUsed }} / {{ convertBytes(props.metricTotal) }}</span>
+    </div>
+
     <div class="metricBarTotal">
       <div class="metricBarUsed" :style="{ width: props.metricUsed + '%' }">
-        <span class="metricBarUsedCount">{{ props.metricUsed }}</span>
+        <span class="metricBarUsedCount">{{ props.metricUsed }}%</span>
       </div>
     </div>
   </div>
@@ -24,16 +28,33 @@ const usedWidth = ref(props.metricUsed);
 <style scoped>
 .metricBar {
   width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.metricName {
+  font-size: 1.5em;
 }
 
 .metricBarTotal {
   width: 100%;
   height: 50px;
-  border: 1px solid white;
+  border: 3px solid var(--bar-used);
 }
 
 .metricBarUsed {
-  background-color: blueviolet;
-  height: 50px;
+  background-color: var(--bar-used);
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  font-size: 1.5em;
+}
+
+.metricBarUsedCount {
+  position: relative;
+  right: 5px;
+  align-self: center;
 }
 </style>

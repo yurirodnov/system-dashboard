@@ -15,10 +15,7 @@ const props = defineProps<Props>();
 
 <template>
   <div class="mericsWrapper">
-    <div class="metric">
-      <h3>RAM</h3>
-      <MetricBar :metric-total="staticData.memory.memoryTotal" :metric-used="dynamicData?.memory.memoryUsed" />
-    </div>
+    <MetricBar :metric-total="staticData.memory.memoryTotal" :metric-used="dynamicData?.memory.memoryUsed" />
 
     <!-- <div class="cpuMetricsWrapper">
       <MetricBlock
@@ -46,12 +43,6 @@ const props = defineProps<Props>();
   display: flex;
   flex-direction: column;
   gap: 50px;
-}
-
-.metric {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 }
 
 .systemMetricsWrapper,

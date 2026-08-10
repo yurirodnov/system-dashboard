@@ -1,5 +1,10 @@
 /* global.css */
 
+@font-face {
+  font-family: Silkscreen;
+  src: url(../fonts/Silkscreen-Regular.ttf);
+}
+
 #app {
   height: 100%;
   color: var(--main-text-color);
@@ -7,4 +12,5 @@
   background: linear-gradient(90deg, rgba(11, 38, 48, 1) 0%, rgba(101, 64, 173, 1) 47%, rgb(123, 36, 133) 100%);
   display: flex;
   justify-content: center;
+  font-family: Silkscreen;
 }
