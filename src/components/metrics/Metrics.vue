@@ -15,6 +15,14 @@ const props = defineProps<Props>();
 
 <template>
   <div class="mericsWrapper">
+    <div class="cpuMetricsWrapper">
+      <h3>CPU</h3>
+      <div class="metricsBlocks">
+        <MetricBlock metric-name="load" :metric-value="dynamicData?.cpu.cpuLoad" />
+        <MetricBlock metric-name="t°" :metric-value="dynamicData?.cpu.cpuLoad" />
+      </div>
+    </div>
+
     <MetricBar
       :metric-total="staticData.memory.memoryTotal"
       :metric-used-percent="dynamicData?.memory.memoryUsedPercent"
@@ -28,6 +36,16 @@ const props = defineProps<Props>();
   display: flex;
   flex-direction: column;
   gap: 50px;
+}
+
+.cpuMetricsWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.metricsBlocks {
+  display: flex;
+  gap: 30px;
 }
 
 .systemMetricsWrapper,

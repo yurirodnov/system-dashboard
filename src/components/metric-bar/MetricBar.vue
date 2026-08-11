@@ -39,13 +39,13 @@ const props = defineProps<MetricBarProps>();
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.5em;
 }
 
 .metricBarTotal {
   width: 100%;
   height: 50px;
   border: 3px solid var(--bar-used);
+  box-shadow: 0px 0px 15px 0px var(--neon-shadow-color);
 }
 
 .metricBarUsed {
