@@ -31,6 +31,7 @@ export interface FS {
   fsNumber: number;
   spaceTotal: number;
   spaceUsed: number;
+  usedPercent: number;
 }
 
 export interface StaticCommon {

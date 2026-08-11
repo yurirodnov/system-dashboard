@@ -27,7 +27,22 @@ const props = defineProps<Props>();
       :metric-total="staticData.memory.memoryTotal"
       :metric-used-percent="dynamicData?.memory.memoryUsedPercent"
       :metric-used-count="dynamicData?.memory.memoryUsedCount"
+      metric-name="RAM"
     />
+
+    <div class="diskMetricsWrapper">
+      <h3>STORAGE</h3>
+
+      <div class="list">
+        <div v-for="fs in staticData.fs" :key="fs.fsNumber" class="item">
+          <MetricBar
+            :metric-total="fs.spaceTotal"
+            :metric-used-count="fs.spaceUsed"
+            :metric-used-percent="fs.usedPercent"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -47,5 +62,11 @@ const props = defineProps<Props>();
 .metricsBlocks {
   display: flex;
   gap: 30px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 </style>

@@ -6,6 +6,7 @@ interface MetricBarProps {
   metricTotal: number;
   metricUsedPercent: number | undefined;
   metricUsedCount: number | undefined;
+  metricName?: string;
 }
 
 const props = defineProps<MetricBarProps>();
@@ -14,7 +15,7 @@ const props = defineProps<MetricBarProps>();
 <template>
   <div class="metricBar">
     <div class="metricInfo">
-      <h3 class="metricName">RAM</h3>
+      <h3 class="metricName">{{ props.metricName ? props.metricName : null }}</h3>
       <!-- <span>&nbsp;>>>&nbsp;</span>
       <span>{{ convertBytes(props.metricUsedCount) }} / {{ convertBytes(props.metricTotal) }}</span> -->
     </div>
@@ -58,7 +59,7 @@ const props = defineProps<MetricBarProps>();
   display: flex;
   align-items: center;
   justify-content: end;
-  font-size: 1.5em;
+
   transition: width 0.5s ease-in-out;
 }
 
@@ -72,6 +73,5 @@ const props = defineProps<MetricBarProps>();
   position: relative;
   right: 5px;
   align-self: center;
-  font-size: 1.5em;
 }
 </style>

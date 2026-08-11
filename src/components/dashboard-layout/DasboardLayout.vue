@@ -17,5 +17,6 @@ import Body from "../body/Body.vue";
   background-color: var(--main-bg);
   height: 90%;
   box-shadow: 0px 0px 50px -9px rgba(0, 0, 0, 0.3);
+  padding: 10px;
 }
 </style>
