@@ -41,16 +41,10 @@ const props = defineProps<Props>();
 .cpuMetricsWrapper {
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .metricsBlocks {
-  display: flex;
-  gap: 30px;
-}
-
-.systemMetricsWrapper,
-.cpuMetricsWrapper,
-.memoryMetricsWrapper {
   display: flex;
   gap: 30px;
 }
