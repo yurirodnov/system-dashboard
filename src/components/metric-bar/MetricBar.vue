@@ -15,14 +15,15 @@ const props = defineProps<MetricBarProps>();
   <div class="metricBar">
     <div class="metricInfo">
       <h3 class="metricName">RAM</h3>
-      <span>&nbsp;>>>&nbsp;</span>
-      <span>{{ convertBytes(props.metricUsedCount) }} / {{ convertBytes(props.metricTotal) }}</span>
+      <!-- <span>&nbsp;>>>&nbsp;</span>
+      <span>{{ convertBytes(props.metricUsedCount) }} / {{ convertBytes(props.metricTotal) }}</span> -->
     </div>
 
     <div class="metricBarTotal">
       <div class="metricBarUsed" :style="{ width: props.metricUsedPercent + '%' }">
-        <span class="metricBarUsedCount">{{ props.metricUsedPercent }}%</span>
+        <span class="metricBarUsedCount">{{ convertBytes(props.metricUsedCount) }}</span>
       </div>
+      <span class="metricBarTotalCount">{{ convertBytes(props.metricTotal) }}</span>
     </div>
   </div>
 </template>
@@ -42,6 +43,9 @@ const props = defineProps<MetricBarProps>();
 }
 
 .metricBarTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
   height: 50px;
   border: 3px solid var(--bar-used);
@@ -55,11 +59,19 @@ const props = defineProps<MetricBarProps>();
   align-items: center;
   justify-content: end;
   font-size: 1.5em;
+  transition: width 0.5s ease-in-out;
 }
 
 .metricBarUsedCount {
   position: relative;
   right: 5px;
   align-self: center;
+}
+
+.metricBarTotalCount {
+  position: relative;
+  right: 5px;
+  align-self: center;
+  font-size: 1.5em;
 }
 </style>

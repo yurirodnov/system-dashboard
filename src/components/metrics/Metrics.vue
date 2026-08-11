@@ -19,7 +19,7 @@ const props = defineProps<Props>();
       <h3>CPU</h3>
       <div class="metricsBlocks">
         <MetricBlock metric-name="load" :metric-value="dynamicData?.cpu.cpuLoad" />
-        <MetricBlock metric-name="t°" :metric-value="dynamicData?.cpu.cpuLoad" />
+        <MetricBlock metric-name="t°" :metric-value="dynamicData?.cpu.cpuTemperature" />
       </div>
     </div>
 

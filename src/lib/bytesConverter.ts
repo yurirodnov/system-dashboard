@@ -3,7 +3,7 @@ export const convertBytes = (bytes: number | undefined, decimals: number = 2): s
 
   const unit = 1024;
   const dm = decimals < 0 ? 0 : decimals;
-  const sizes = ["Bytes", "KiB", "MiB", "GiB", "TiB", "PiB"];
+  const sizes = ["B", "KB", "MB", "GB", "TB", "PB"];
 
   if (bytes) {
     const i = Math.floor(Math.log(bytes) / Math.log(unit));

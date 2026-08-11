@@ -46,6 +46,7 @@ export interface StaticCommon {
 
 interface DynamicCPU {
   cpuLoad: number;
+  cpuTemperature: number;
 }
 
 export interface DynamicMemory {
