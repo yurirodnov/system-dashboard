@@ -3,7 +3,7 @@ import { convertBytes } from "@/lib/bytesConverter";
 import { ref } from "vue";
 
 interface MetricBarProps {
-  metricTotal: number;
+  metricTotal: number | undefined;
   metricUsedPercent: number | undefined;
   metricUsedCount: number | undefined;
   metricName?: string;

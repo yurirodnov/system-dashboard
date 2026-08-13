@@ -13,6 +13,9 @@ interface StaticGPU {
   modelName: string | undefined;
   gpuMemoryTotal: number | undefined;
   gpuMemoryFree: number | undefined;
+  gpuMemoryUsed: number;
+  gpuMemoryUsedPercent: number;
+  gpuLoad: number;
 }
 
 interface StaticOs {
