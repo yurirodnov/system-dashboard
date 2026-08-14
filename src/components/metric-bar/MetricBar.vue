@@ -23,7 +23,11 @@ const props = defineProps<MetricBarProps>();
     </div>
 
     <div class="metricBarTotal">
-      <div class="metricBarUsed" :style="{ width: props.metricUsedPercent + '%' }">
+      <div
+        class="metricBarUsed"
+        :class="{ 'metricBarUsed--outside': (props.metricUsedPercent ?? 0) < 20 }"
+        :style="{ width: props.metricUsedPercent + '%' }"
+      >
         <span class="metricBarUsedCount">{{ convertUnits(props.metricUsedCount, metricFrom, metricTo, 1024, 2) }}</span>
       </div>
       <span class="metricBarTotalCount">{{ convertUnits(props.metricTotal, metricFrom, metricTo, 1024, 2) }}</span>
@@ -56,24 +60,31 @@ const props = defineProps<MetricBarProps>();
 }
 
 .metricBarUsed {
+  position: relative;
   background-color: var(--bar-used);
   height: 44px;
   display: flex;
   align-items: center;
   justify-content: end;
-
   transition: width 0.5s ease-in-out;
 }
 
 .metricBarUsedCount {
-  position: relative;
+  position: absolute;
   right: 5px;
-  align-self: center;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+}
+
+.metricBarUsed--outside .metricBarUsedCount {
+  right: auto;
+  left: calc(100% + 6px);
 }
 
 .metricBarTotalCount {
   position: relative;
-  right: 5px;
+  right: 10px;
   align-self: center;
 }
 </style>

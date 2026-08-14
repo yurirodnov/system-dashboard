@@ -91,7 +91,7 @@ const props = defineProps<Props>();
 .gpuMetricsWrapper {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 30px;
 }
 
 .metricsBlocks {
