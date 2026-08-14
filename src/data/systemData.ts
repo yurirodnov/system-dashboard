@@ -2,11 +2,15 @@ interface StaticCPU {
   manufacturer: string;
   modelName: string;
   cores: number;
+  currentLoad: number;
+  currentTemperature: number;
 }
 
 interface StaticMemory {
   memoryTotal: number;
   memoryFree: number;
+  memoryUsedPercent: number;
+  memoryUsedCount: number;
 }
 
 interface StaticGPU {

@@ -53,9 +53,14 @@ onMounted(() => {
     console.log("Socket disconnected. Reason:", reason);
   });
 
-  socket.on("metrics-update", (data) => {
-    console.log("Data received:", data);
-    wsData.value = data;
+  socket.on("metrics-update", (wsData) => {
+    console.log("Data received:", wsData);
+    if (data.value) {
+      data.value.cpu.currentLoad = wsData.cpu.cpuLoad;
+      data.value.cpu.currentTemperature = wsData.cpu.cpuTemperature;
+    }
+
+    //wsData.value = data;
   });
 });
 </script>

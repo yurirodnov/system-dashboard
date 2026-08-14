@@ -18,15 +18,15 @@ const props = defineProps<Props>();
       <div class="cpuMetricsWrapper">
         <h3>CPU</h3>
         <div class="metricsBlocks">
-          <MetricBlock metric-name="load" :metric-value="dynamicData?.cpu.cpuLoad" />
-          <MetricBlock metric-name="t°" :metric-value="dynamicData?.cpu.cpuTemperature" />
+          <MetricBlock metric-name="load" :metric-value="staticData.cpu.currentLoad" />
+          <MetricBlock metric-name="t°" :metric-value="staticData.cpu.currentTemperature" />
         </div>
       </div>
 
       <MetricBar
         :metric-total="staticData.memory.memoryTotal"
-        :metric-used-percent="dynamicData?.memory.memoryUsedPercent"
-        :metric-used-count="dynamicData?.memory.memoryUsedCount"
+        :metric-used-percent="staticData.memory.memoryUsedPercent"
+        :metric-used-count="staticData.memory.memoryUsedCount"
         metric-name="RAM"
         metric-from="b"
         metric-to="gb"
