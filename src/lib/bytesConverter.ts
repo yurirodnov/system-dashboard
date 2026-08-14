@@ -15,9 +15,16 @@
 // };
 
 export type UnitTypes = "b" | "kb" | "mb" | "gb" | "tb";
+export type BaseTypes = 1024 | 1000;
 
-export const unitConverter = (count: number, decimals: number = 2, from: UnitTypes, to: UnitTypes): string => {
-  if (!count || count < 0) return `0 ${to}`;
+export const convertUnits = (
+  count: number | undefined,
+  from: UnitTypes,
+  to: UnitTypes,
+  base: BaseTypes,
+  decimals: number = 2,
+): string => {
+  if (!count || count < 0 || isNaN(count)) return `0 ${to}`;
 
   const powMap = {
     b: 0,
@@ -27,5 +34,5 @@ export const unitConverter = (count: number, decimals: number = 2, from: UnitTyp
     tb: 4,
   };
 
-  return `${Number(count * 1024 ** (powMap[from] - powMap[to])).toFixed(decimals)} ${to}`;
+  return `${(count * base ** (powMap[from] - powMap[to])).toFixed(decimals)} ${to}`;
 };

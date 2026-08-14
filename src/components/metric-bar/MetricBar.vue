@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { convertBytes } from "@/lib/bytesConverter";
-import { ref } from "vue";
+import { convertUnits } from "@/lib/bytesConverter";
+import type { UnitTypes } from "@/lib/bytesConverter";
 
 interface MetricBarProps {
   metricTotal: number | undefined;
   metricUsedPercent: number | undefined;
   metricUsedCount: number | undefined;
   metricName?: string;
+  metricFrom: UnitTypes;
+  metricTo: UnitTypes;
 }
 
 const props = defineProps<MetricBarProps>();
@@ -22,9 +24,9 @@ const props = defineProps<MetricBarProps>();
 
     <div class="metricBarTotal">
       <div class="metricBarUsed" :style="{ width: props.metricUsedPercent + '%' }">
-        <span class="metricBarUsedCount">{{ convertBytes(props.metricUsedCount) }}</span>
+        <span class="metricBarUsedCount">{{ convertUnits(props.metricUsedCount, metricFrom, metricTo, 1024, 2) }}</span>
       </div>
-      <span class="metricBarTotalCount">{{ convertBytes(props.metricTotal) }}</span>
+      <span class="metricBarTotalCount">{{ convertUnits(props.metricTotal, metricFrom, metricTo, 1024, 2) }}</span>
     </div>
   </div>
 </template>

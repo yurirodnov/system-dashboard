@@ -3,7 +3,6 @@ import type { DynamicCommon, StaticCommon } from "@/data/systemData.ts";
 import MetricBlock from "../metric-block/MetricBlock.vue";
 import MetricBar from "../metric-bar/MetricBar.vue";
 import { convertSeconds } from "@/lib/secondsConverter.ts";
-import { convertBytes } from "@/lib/bytesConverter.ts";
 
 interface Props {
   staticData: StaticCommon;
@@ -29,6 +28,8 @@ const props = defineProps<Props>();
         :metric-used-percent="dynamicData?.memory.memoryUsedPercent"
         :metric-used-count="dynamicData?.memory.memoryUsedCount"
         metric-name="RAM"
+        metric-from="b"
+        metric-to="gb"
       />
 
       <div class="diskMetricsWrapper">
@@ -40,6 +41,8 @@ const props = defineProps<Props>();
               :metric-total="fs.spaceTotal"
               :metric-used-count="fs.spaceUsed"
               :metric-used-percent="fs.usedPercent"
+              metric-from="b"
+              metric-to="gb"
             />
           </div>
         </div>
@@ -47,14 +50,21 @@ const props = defineProps<Props>();
     </div>
 
     <div class="metricsRight">
-      <!-- <div class="gpuMetricsWrapper">
+      <div class="gpuMetricsWrapper">
         <h3>GPU</h3>
         <div class="metricsBlocks">
           <MetricBlock metric-name="load" :metric-value="staticData.gpu.gpuLoad" />
           <MetricBlock metric-name="t°" :metric-value="dynamicData?.cpu.cpuTemperature" />
         </div>
-        <MetricBar :metric-total="staticData.gpu.gpuMemoryTotal" metric-name="GPU memory" />
-      </div> -->
+        <MetricBar
+          :metric-total="staticData.gpu.gpuMemoryTotal"
+          :metric-used-percent="staticData.gpu.gpuMemoryUsedPercent"
+          :metric-used-count="staticData.gpu.gpuMemoryUsed"
+          metric-name="GPU memory"
+          metric-from="mb"
+          metric-to="gb"
+        />
+      </div>
 
       <div class="uptimeWrapper">
         <h3>UPTIME</h3>
