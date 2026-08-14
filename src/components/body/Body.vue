@@ -34,8 +34,6 @@ const loadData = async () => {
   } finally {
     loading.value = false;
   }
-
-  console.log("Fetched data", data.value);
 };
 
 onMounted(() => {

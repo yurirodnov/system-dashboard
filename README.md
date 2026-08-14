@@ -6,7 +6,7 @@ Frontend app for a minimalistic dashboard with main metrics of machine.
 
 ## Features
 
-- Built with Vue 3
+- Built with Vue 3, TypeScript
 - Backend: https://github.com/yurirodnov/system-data-collector
 - Retro pixel design
 
