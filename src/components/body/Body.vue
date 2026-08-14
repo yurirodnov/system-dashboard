@@ -77,6 +77,11 @@ onMounted(() => {
           return staticDiskData;
         });
       }
+
+      data.value.gpu.gpuLoad = wsData.gpu.gpuLoad;
+      data.value.gpu.gpuTemperature = wsData.gpu.gpuTemperature;
+
+      data.value.system.uptime = wsData.system.uptime;
     }
 
     //wsData.value = data;

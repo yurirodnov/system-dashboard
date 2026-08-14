@@ -20,6 +20,7 @@ interface StaticGPU {
   gpuMemoryUsed: number;
   gpuMemoryUsedPercent: number;
   gpuLoad: number;
+  gpuTemperature: number;
 }
 
 interface StaticOs {
@@ -41,6 +42,10 @@ export interface FS {
   usedPercent: number;
 }
 
+interface StaticSystem {
+  uptime: number;
+}
+
 export interface StaticCommon {
   cpu: StaticCPU;
   memory: StaticMemory;
@@ -48,6 +53,7 @@ export interface StaticCommon {
   os: StaticOs;
   disk: Disk[];
   fs: FS[];
+  system: StaticSystem;
 }
 
 // Dynamic data

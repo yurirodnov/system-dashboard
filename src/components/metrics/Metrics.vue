@@ -53,8 +53,8 @@ const props = defineProps<Props>();
       <div class="gpuMetricsWrapper">
         <h3>GPU</h3>
         <div class="metricsBlocks">
-          <MetricBlock metric-name="load" :metric-value="staticData.gpu.gpuLoad" />
-          <MetricBlock metric-name="t°" :metric-value="dynamicData?.cpu.cpuTemperature" />
+          <MetricBlock metric-name="load" :metric-value="staticData.gpu.gpuLoad ? staticData.gpu.gpuLoad : 'N/A'" />
+          <MetricBlock metric-name="t°" :metric-value="staticData.gpu.gpuTemperature" />
         </div>
         <MetricBar
           :metric-total="staticData.gpu.gpuMemoryTotal"
@@ -68,7 +68,7 @@ const props = defineProps<Props>();
 
       <div class="uptimeWrapper">
         <h3>UPTIME</h3>
-        <span class="uptimeValue">{{ convertSeconds(props.dynamicData?.system.uptime) }}</span>
+        <span class="uptimeValue">{{ convertSeconds(props.staticData.system.uptime) }}</span>
       </div>
     </div>
   </div>
