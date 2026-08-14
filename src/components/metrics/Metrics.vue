@@ -35,7 +35,7 @@ const props = defineProps<Props>();
       <div class="diskMetricsWrapper">
         <h3>STORAGE</h3>
 
-        <div class="list">
+        <div class="storageList">
           <div v-for="fs in staticData.fs" :key="fs.fsNumber" class="item">
             <MetricBar
               :metric-total="fs.spaceTotal"
@@ -99,7 +99,7 @@ const props = defineProps<Props>();
   gap: 30px;
 }
 
-.list {
+.storageList {
   display: flex;
   flex-direction: column;
   gap: 10px;

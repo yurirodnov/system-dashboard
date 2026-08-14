@@ -58,6 +58,25 @@ onMounted(() => {
     if (data.value) {
       data.value.cpu.currentLoad = wsData.cpu.cpuLoad;
       data.value.cpu.currentTemperature = wsData.cpu.cpuTemperature;
+
+      data.value.memory.memoryUsedCount = wsData.memory.memoryUsedCount;
+      data.value.memory.memoryUsedPercent = wsData.memory.memoryUsedPercent;
+
+      if (wsData.fs && Array.isArray(wsData.fs)) {
+        data.value.fs = data.value.fs.map((staticDiskData, index) => {
+          const dynamicDisk = wsData.fs[index];
+
+          if (dynamicDisk) {
+            return {
+              ...staticDiskData,
+              spaceUsed: dynamicDisk.spaceUsed,
+              usedPercent: dynamicDisk.usedPercent,
+            };
+          }
+
+          return staticDiskData;
+        });
+      }
     }
 
     //wsData.value = data;
